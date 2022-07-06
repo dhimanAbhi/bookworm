@@ -61,7 +61,7 @@ const isLoggedIn = (req, res, next) => {
  }
 
 
-app.get('/bookworm', (req, res)=>{
+app.get('/', (req, res)=>{
     let categories =    ['art','biographies','biology','chemistry','children','design','entrepreneurship','exercise','fantasy',
                         'film','finance','horror','history','literature','magic','management','mathematics','medicine','nutrition',
                         'physics','poetry','plays','programming','recipes','romance','science','textbooks','thriller'];    
