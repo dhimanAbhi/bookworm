@@ -17,7 +17,7 @@ const catchAsync = require('./views/utils/catchAsync');
 const LocalStrategy = require('passport-local');
 const { use } = require('passport/lib');
 
-const dbUrl = process.enc.DB_URL || "mongodb://localhost:27017/bookWorm";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/bookWorm";
 
 	    mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(()=>{
