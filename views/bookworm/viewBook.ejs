@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate')%>
+<div class="book-heading"><h1><%=bookInfo.title%></h1></div>
+<div class="book-info">
+    <div class="book-info-img"> 
+        <% if(bookInfo.cover_i){ %>
+            <img src="https://covers.openlibrary.org/w/id/<%=bookInfo.cover_i%>-L.jpg" alt="">
+        <% } else{%>  
+                <h4>Preview not available</h4>
+        <%}%>
+    </div>
+    <div class="book-info-content">
+        <div><strong>Title:</strong> <%=bookInfo.title%></div>
+        <div><strong>Author:</strong> <% if(bookInfo.author_name) {%><a href="/bookworm/view/authors/<%=bookInfo.author_key%>"><%=bookInfo.author_name%></a><% }else{%>Unknown<%}%></div>
+        <% if(bookWorkInfo.description) {%> <div><strong>Description: </strong><%-(bookWorkInfo.description.value||bookWorkInfo.description)%></div><%}%>
+        <% if(bookInfo.number_of_pages_median) {%> <div>No of Pages: <%-bookInfo.number_of_pages_median%></div><%}%>
+        <% if(bookInfo.first_publish_year) {%> <div><strong>First Published Year: </strong><%-bookInfo.first_publish_year%></div><%}%>
+        <% if(bookInfo.edition_count) {%> <div><strong>Number of Editions: </strong><%-bookInfo.edition_count%></div><%}%>
+        <% if(bookInfo.isbn) {%> <div><strong>ISBN: </strong><%-bookInfo.isbn[0]%></div><%}%>
+    </div>
+</div>
+
+<div class="reviews">
+    <div class="reviewBox">
+            <form action="/bookworm/postReviews/<%-bookInfo.key.substring(7, bookInfo.key.length)%>" method="POST">
+                <fieldset class="starability-basic">
+                <div style="font-weight:500; color:#ae5100" class="mt-5 mb-2">Rate This Book!</div>
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                <input type="radio" id="second-rate1" name="rating" value="1" />
+                <label for="second-rate1" title="Terrible">1</label>
+                <input type="radio" id="second-rate2" name="rating" value="2" />
+                <label for="second-rate2" title="Not good">2</label>
+                <input type="radio" id="second-rate3" name="rating" value="3" />
+                <label for="second-rate3" title="Average">3</label>
+                <input type="radio" id="second-rate4" name="rating" value="4" />
+                <label for="second-rate4" title="Very good">4</label>
+                <input type="radio" id="second-rate5" name="rating" value="5" />
+                <label for="second-rate5" title="Amazing">5</label>
+                </fieldset>        
+
+                <div><textarea name="description" class="comment"></textarea></div>
+                <div><button class="btn btn-success">Post</button></div>
+            </form>
+    </div>
+    <div class="reviewData">
+            <% for(let review of bookReviews){%>
+            <div class="review-data">
+                <div>
+                    Posted By: <strong><%=review.user.username%></strong>
+                </div>
+                <p class="starability-result" data-rating="<%=review.rating%>">
+                    Rated: <%= review.rating %> stars
+                </p>
+                <div>
+                    Review: <%=review.description%>
+                </div>
+                <div>
+                    <% if(currentUser && review.user.equals(currentUser._id)){%>
+                    <form action="/bookworm/<%-bookInfo.key.substring(7, bookInfo.key.length)%>/deleteReview/<%-review._id%>" method="POST">
+                        <button class="btn btn-danger mt-1">Delete</button>
+                    </form>
+                    <%}%>
+                </div>
+            </div>        
+            <%}%>
+    </div>
+</div>

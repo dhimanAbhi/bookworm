@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate')%>
+<div class="book-heading"><h1><%=authorInfo.name%></h1></div>
+<div class="book-info">
+    <div class="book-info-img"> 
+        <% if(authorInfo.photos){ %>
+            <img src="https://covers.openlibrary.org/a/id/<%=authorInfo.photos[0]%>-M.jpg" alt="">
+        <% } else{%>  
+                <h4>Preview not available</h4>
+        <%}%>
+    </div>
+    <div class="">
+        <div>Name: <%-(authorInfo.name)? authorInfo.name:"Unknown Author"%></div>
+        <div>Bio: <%- (authorInfo.bio)?(authorInfo.bio.value||authorInfo.bio) :"Not available"%></div>
+        <div><%- (authorInfo.birth_date)?"Birth Date: "+authorInfo.birth_date : ""%></div>
+        <div><%- (authorInfo.death_date)?"Death Date: "+authorInfo.death : ""%></div>
+        <div><%- (authorInfo.remote_ids && authorInfo.remote_ids.isni)?"ISNI ID: "+authorInfo.remote_ids.isni : ""%></div>
+        <div><% if(authorInfo.links && authorInfo.links[0].url){ %>Link: <a href="<%=authorInfo.links[0].url%>"><%=authorInfo.links[0].url%></a><%}%></div>
+        <div><% if(authorInfo.wikipedia){ %>Wikipedia: <a href="<%=authorInfo.wikipedia%>"><%=authorInfo.wikipedia%></a><%}%></div>
+      </div>
+</div>
+

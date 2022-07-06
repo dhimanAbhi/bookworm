@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate')%>
+
+
+<div class="categories">
+  <% for(let category of categories){%>
+    <a href="/bookworm/subject/<%=category%>" class="cat-link">
+      <div class="category">
+        <%-category.charAt(0).toUpperCase() + category.slice(1)%>
+      </div>
+  </a>
+  <%}%>
+</div>

@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate')%>
+
+<h4><%-category.charAt(0).toUpperCase() + category.slice(1)%></h4>    
+
+<div class="book-results" >
+  <% for(let work of categoryResult) {%>
+          <div class="card card-shadow book-card">
+              <% if(work.cover_id){ %>
+                  <img class="card-img-top book-img" src="https://covers.openlibrary.org/w/id/<%=work.cover_id%>-M.jpg" alt="..." />
+              <% } else{%>
+              <div class="card-img-top book-img">
+                  <h4>Preview not available</h4>
+              </div>
+              <%}%>
+              <form action="/bookworm/addFavourite/<%-work.key.substring(7, work.key.length)%>" method="POST">
+              <div class="card-body book-inner-body">
+                  <div class="card-title book-title">Title: <%- (work.title.length > 12)? work.title.substring(0,12)+"..." : work.title %></div>
+                  <div class="card-text">Author: <% if(work.authors[0].name) {%><a href="/bookworm/view<%=work.authors[0].key%>"><%- (work.authors[0].name.length > 12)? work.authors[0].name.substring(0,12)+"..." : work.authors[0].name %></a><% }else{%>Unknown<%}%></div>
+                  <a href="/bookworm/view/book/<%-work.key.substring(7, work.key.length)%>" class="btn btn-primary book-button">View Book</a>
+                  <button class="btn btn-primary addFav" >Add To Favourites</button>
+                </div>
+            </form>
+
+          </div>          
+  <% } %>
+</div>
+
+

@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate') %>
+<div  class="book-results" >
+        <% for(let doc of searchDocs) {%>
+                <div class="card card-shadow book-card">
+                    <% if(doc.cover_i){ %>
+                    <img class="card-img-top book-img" src="https://covers.openlibrary.org/w/id/<%=doc.cover_i%>-M.jpg" alt="...">
+                    <% } else{%>
+                    <div class="card-img-top book-img">
+                        <h4>Preview not available</h4>
+                    </div>
+                    <%}%>
+                    <form action="/bookworm/addFavourite/<%-doc.key.substring(7, doc.key.length)%>" method="POST">
+                        <div class="card-body book-inner-body">
+                            <div class="card-title book-title">Title: <%- (doc.title.length > 12)? doc.title.substring(0,12)+"..." : doc.title %></div>
+                            <div class="card-text">Author: <% if(doc.author_name) {%><a href="/bookworm/view/authors/<%=doc.author_key[0]%>"><%- (doc.author_name[0].length > 12)? doc.author_name[0].substring(0,12)+"..." : doc.author_name[0] %></a><% }else{%>Unknown<%}%></div>
+                            <a href="/bookworm/view/book/<%-doc.key.substring(7, doc.key.length)%>" class="btn btn-primary book-button">View Book</a>
+                            <button class="btn btn-primary addFav">Add To Favourites</button>
+                        </div>
+                    </form>
+                </div>          
+        <% } %>
+</div>
+
+
