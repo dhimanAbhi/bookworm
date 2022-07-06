@@ -17,7 +17,9 @@ const catchAsync = require('./views/utils/catchAsync');
 const LocalStrategy = require('passport-local');
 const { use } = require('passport/lib');
 
-	    mongoose.connect('mongodb://localhost:27017/bookWorm', {useNewUrlParser: true, useUnifiedTopology: true})
+const dbUrl = process.enc.DB_URL || "mongodb://localhost:27017/bookWorm";
+
+	    mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
             .then(()=>{
                 console.log("Connection Open!!");
             })
@@ -247,7 +249,9 @@ app.use((err, req, res, next)=>{
     res.status(statusCode).render('error', { err });
 });
 
-app.listen('3000', ()=>{
-    console.log("listening on port 3000");
+const port = process.env.PORT || 3000;
+
+app.listen(port, ()=>{
+    console.log(`Listening on port ${port}`);
 });
 
