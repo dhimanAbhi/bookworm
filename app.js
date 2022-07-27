@@ -32,8 +32,6 @@ const { use } = require('passport/lib');
             
 
 
-
-
 const sessionOptions = {secret: 'thisisnotagoodsecret', resave: false , saveUninitialized: true}
 app.use(session(sessionOptions));
 app.engine('ejs',ejsMate);
