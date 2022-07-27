@@ -17,9 +17,9 @@ const catchAsync = require('./views/utils/catchAsync');
 const LocalStrategy = require('passport-local');
 const { use } = require('passport/lib');
 
-// const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/bookWorm";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/bookWorm";
 
-	    mongoose.connect("mongodb+srv://abhi2002dhi:nidhidhiman@cluster0.kp6ro.mongodb.net/bookWorm?retryWrites=true&w=majority", {
+	    mongoose.connect(dbUrl, {
             useNewUrlParser: true, 
             useUnifiedTopology: true
         })
