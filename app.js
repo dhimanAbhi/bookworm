@@ -19,14 +19,20 @@ const { use } = require('passport/lib');
 
 // const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/bookWorm";
 
-	    mongoose.connect("mongodb+srv://abhi2002dhi:nidhidhiman@cluster0.kp6ro.mongodb.net/?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true})
-            .then(()=>{
-                console.log("Connection Open!!");
-            })
-            .catch(err =>{
-                console.log("Oh my gawd...an error");
-                console.log(err);
-            })
+	    mongoose.connect("mongodb+srv://abhi2002dhi:nidhidhiman@cluster0.kp6ro.mongodb.net/bookWorm?retryWrites=true&w=majority", {
+            useNewUrlParser: true, 
+            useUnifiedTopology: true
+        })
+                   
+        const db = mongoose.connection;
+        db.on('error', console.error.bind(console, "connection error"));
+        db.once("open", () => {
+            console.log("Database Connected")
+        })
+            
+
+
+
 
 const sessionOptions = {secret: 'thisisnotagoodsecret', resave: false , saveUninitialized: true}
 app.use(session(sessionOptions));
