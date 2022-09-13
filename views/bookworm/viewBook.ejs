@@ -12,7 +12,7 @@
         <div><strong>Title:</strong> <%=bookInfo.title%></div>
         <div><strong>Author:</strong> <% if(bookInfo.author_name) {%><a href="/bookworm/view/authors/<%=bookInfo.author_key%>"><%=bookInfo.author_name%></a><% }else{%>Unknown<%}%></div>
         <% if(bookWorkInfo.description) {%> <div><strong>Description: </strong><%-(bookWorkInfo.description.value||bookWorkInfo.description)%></div><%}%>
-        <% if(bookInfo.number_of_pages_median) {%> <div>No of Pages: <%-bookInfo.number_of_pages_median%></div><%}%>
+        <% if(bookInfo.number_of_pages_median) {%> <div><strong>No of Pages: </strong><%-bookInfo.number_of_pages_median%></div><%}%>
         <% if(bookInfo.first_publish_year) {%> <div><strong>First Published Year: </strong><%-bookInfo.first_publish_year%></div><%}%>
         <% if(bookInfo.edition_count) {%> <div><strong>Number of Editions: </strong><%-bookInfo.edition_count%></div><%}%>
         <% if(bookInfo.isbn) {%> <div><strong>ISBN: </strong><%-bookInfo.isbn[0]%></div><%}%>

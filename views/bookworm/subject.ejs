@@ -8,8 +8,8 @@
               <% if(work.cover_id){ %>
                   <img class="card-img-top book-img" src="https://covers.openlibrary.org/w/id/<%=work.cover_id%>-M.jpg" alt="..." />
               <% } else{%>
-              <div class="card-img-top book-img">
-                  <h4>Preview not available</h4>
+              <div class="d-flex justify-content-center align-items-center card-img-top book-img">
+                  <h6>Preview not available</h6>
               </div>
               <%}%>
               <form action="/bookworm/addFavourite/<%-work.key.substring(7, work.key.length)%>" method="POST">

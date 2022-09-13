@@ -1,5 +1,5 @@
 <% if( success && success.length) {%>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="alert alert-warning alert-dismissible fade show flash" style="    background-color: rgb(138 232 118); color: rgb(35 161 0);" role="alert">
         <%= success %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
         </button>
@@ -7,7 +7,7 @@
 <% } %>
 
 <% if( error && error.length) {%>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <div class="alert alert-warning alert-dismissible fade show flash" style="background-color:rgb(255, 87, 87); color:rgb(146, 0, 0);" role="alert">
       <%= error %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
       </button>

@@ -6,19 +6,19 @@
                 <% if(favourite.imageUrl){ %>
                 <img class="card-img-top book-img" src="https://covers.openlibrary.org/w/id/<%=favourite.imageUrl%>-M.jpg" alt="...">
                 <% } else{%>
-                <div class="card-img-top book-img">
-                    <h4>Preview not available</h4>
+                <div class="d-flex justify-content-center align-items-center card-img-top book-img">
+                    <h2>Preview not available</h2>
                 </div>
                 <%}%>
-                <div class="card-body book-inner-body">
-                    <div class="card-title book-title">Title: <%- (favourite.title.length > 18)? favourite.title.substring(0,18)+"..." : favourite.title %></div>
-                    <div class="card-text">Author: <% if(favourite.authorName) {%><a href="/bookworm/view/authors/<%=favourite.authorId%>"><%- (favourite.authorName.length > 18)? favourite.authorName.substring(0,18)+"..." : favourite.authorName %></a><% }else{%>Unknown<%}%></div>
-                    <a href="/bookworm/view/book/<%-favourite.bookId%>" class="btn btn-primary book-button">View Book</a>
-                    <form action="/bookworm/deleteFavourite/<%-favourite.bookId%>" method="POST">
-                        <button class="btn btn-danger book-button">Remove Favourite</button>
-                    </form>
-                </div>
+                <form action="/bookworm/deleteFavourite/<%-favourite.bookId%>" method="POST">
+                    <div class="card-body book-inner-body">
+                        <div class="card-title book-title">Title: <%- (favourite.title.length > 18)? favourite.title.substring(0,18)+"..." : favourite.title %></div>
+                        <div class="card-text">Author: <% if(favourite.authorName) {%><a href="/bookworm/view/authors/<%=favourite.authorId%>"><%- (favourite.authorName.length > 18)? favourite.authorName.substring(0,18)+"..." : favourite.authorName %></a><% }else{%>Unknown<%}%></div>
+                        <a href="/bookworm/view/book/<%-favourite.bookId%>" class="btn btn-primary book-button">View Book</a>
+                        <button class="btn btn-danger addFav">Remove Favourite</button>
+                    </div>
+                </form>
             </div>          
     <% } %>
 </div>
-
+ 

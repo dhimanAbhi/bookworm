@@ -126,7 +126,7 @@ app.post('/bookworm/register', async (req, res)=>{
         req.login(registeredUser, err =>{
             if(err) return next(err);
             req.flash('success','Welcome to Bookworm!')
-            res.redirect('/bookworm')
+            res.redirect('/')
         })
     }
     catch(err){
@@ -147,14 +147,14 @@ app.post('/bookworm/login',passport.authenticate('local', {failureFlash: true, f
     req.flash('success','Succesfully Logged In!');
     const redirectedUrl = req.session.returnTo || '/bookworm';
     delete req.session.returnTo;
-    res.redirect(redirectedUrl);
+    res.redirect('/');
 })
 
 
 app.get('/bookworm/logout', (req, res)=>{
     req.logOut();
     req.flash('success', 'Succesfully Logged Out!');
-    res.redirect('/bookworm');
+    res.redirect('/');
 })
 
 

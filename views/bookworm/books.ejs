@@ -5,8 +5,8 @@
                     <% if(doc.cover_i){ %>
                     <img class="card-img-top book-img" src="https://covers.openlibrary.org/w/id/<%=doc.cover_i%>-M.jpg" alt="...">
                     <% } else{%>
-                    <div class="card-img-top book-img">
-                        <h4>Preview not available</h4>
+                    <div class="d-flex justify-content-center align-items-center card-img-top book-img">
+                        <h6>Preview not available</h6>
                     </div>
                     <%}%>
                     <form action="/bookworm/addFavourite/<%-doc.key.substring(7, doc.key.length)%>" method="POST">
@@ -20,5 +20,5 @@
                 </div>          
         <% } %>
 </div>
-
+ 
 

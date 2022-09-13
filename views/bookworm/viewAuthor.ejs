@@ -8,14 +8,14 @@
                 <h4>Preview not available</h4>
         <%}%>
     </div>
-    <div class="">
-        <div>Name: <%-(authorInfo.name)? authorInfo.name:"Unknown Author"%></div>
-        <div>Bio: <%- (authorInfo.bio)?(authorInfo.bio.value||authorInfo.bio) :"Not available"%></div>
-        <div><%- (authorInfo.birth_date)?"Birth Date: "+authorInfo.birth_date : ""%></div>
-        <div><%- (authorInfo.death_date)?"Death Date: "+authorInfo.death : ""%></div>
-        <div><%- (authorInfo.remote_ids && authorInfo.remote_ids.isni)?"ISNI ID: "+authorInfo.remote_ids.isni : ""%></div>
-        <div><% if(authorInfo.links && authorInfo.links[0].url){ %>Link: <a href="<%=authorInfo.links[0].url%>"><%=authorInfo.links[0].url%></a><%}%></div>
-        <div><% if(authorInfo.wikipedia){ %>Wikipedia: <a href="<%=authorInfo.wikipedia%>"><%=authorInfo.wikipedia%></a><%}%></div>
+    <div class="book-info-content">
+        <div><strong>Name:</strong> <%-(authorInfo.name)? authorInfo.name:"Unknown Author"%></div>
+        <div><strong>Bio: </strong><%- (authorInfo.bio)?(authorInfo.bio.value||authorInfo.bio) :"Not available"%></div>
+        <div><strong>Birth Date: </strong><%- (authorInfo.birth_date)?authorInfo.birth_date : "Not available"%></div>
+        <div><strong>Death Date:</strong> <%- (authorInfo.death_date)?authorInfo.death : "Not available"%></div>
+        <div><strong>ISNI ID:</strong> <%- (authorInfo.remote_ids && authorInfo.remote_ids.isni)?authorInfo.remote_ids.isni : "Not available"%></div>
+        <div><% if(authorInfo.links && authorInfo.links[0].url){ %><strong>Link: </strong><a href="<%=authorInfo.links[0].url%>"><%=authorInfo.links[0].url%></a><%}%></div>
+        <div><% if(authorInfo.wikipedia){ %><strong>Wikipedia: </strong><a href="<%=authorInfo.wikipedia%>"><%=authorInfo.wikipedia%></a><%}%></div>
       </div>
 </div>
 
